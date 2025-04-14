@@ -1,13 +1,13 @@
-import Hero from "@/components/hero";
 import MetalLogo from "@/components/metal-logo";
-import FloatingParticles from "@/components/ui/floatingParticles";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <div className="">
-      <div className="bg-black min-h-screen relative">
-        <div className="w-full h-screen flex flex-col items-center justify-center relative overflow-hidden z-10">
-          <div className="flex flex-col items-center justify-center max-w-5xl px-6 relative z-20">
+      <div className="bg-black min-h-screen hero-background">
+        <div className="w-full h-screen flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center max-w-5xl px-6">
             <h2 className="text-6xl font-bold text-white bg-clip-text bg-gradient-to-r from-white to-gray-300">
               Xenon Notes
             </h2>
@@ -18,12 +18,21 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="w-1/2 h-[250px] relative z-20">
+          <div className="w-1/2 h-[250px]">
             <MetalLogo />
           </div>
         </div>
       </div>
-      <Hero />
+      <div className="w-full min-h-screen bg-black flex">
+        <ScrollReveal>Change the way you're making notes...</ScrollReveal>
+        <Image
+          src={"/woman-notes.jpeg"}
+          alt="Hero"
+          width={1000}
+          height={1000}
+          className="w-1/2 object-cover"
+        />
+      </div>
     </div>
   );
 }
