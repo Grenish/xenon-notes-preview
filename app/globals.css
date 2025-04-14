@@ -1,25 +1,28 @@
 @import "tailwindcss";
 
-/* Define your custom keyframes */
 @keyframes float {
   0%,
   100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-20px); /* Matches your config */
+    transform: translateY(-20px);
   }
 }
 
-/* Define your custom utility classes within the 'utilities' layer */
 @layer utilities {
   .animate-pulse-slow {
-    /* Assuming 'pulse' keyframes are still available/defined by Tailwind core */
     animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 
   .animate-float {
-    /* Reference the custom 'float' keyframes defined above */
     animation: float 12s ease-in-out infinite;
   }
+}
+
+.hero-background {
+  background-image: url("../public/hero-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
