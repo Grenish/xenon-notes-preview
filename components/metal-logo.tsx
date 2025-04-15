@@ -3,7 +3,7 @@
 import MetallicPaint, { parseLogoImage } from "./ui/metallicPaint";
 import { useState, useEffect } from "react";
 
-const LOGO_PATH = "/xenon-black.svg";
+const LOGO_PATH = "/xenon-vector-black.svg";
 const CACHE_KEY = "xenon-logo-cache";
 const CACHE_EXPIRY = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
