@@ -20,6 +20,7 @@ import { GoogleGeminiEffectDemo } from "@/components/scroll";
 import { LineShadowText } from "@/components/ui/lineShadowText";
 import { TextAnimate } from "@/components/ui/textAnimate";
 import { BentoPageTwo } from "@/components/bentoPageTwo";
+import HyperSpeedDemo from "@/components/hyperSpeedDemo";
 
 export default function Home() {
   const navItems = [
@@ -228,6 +229,8 @@ export default function Home() {
 
       <div className="">
         <GoogleGeminiEffectDemo />
+      </div>
+      <div className="w-full h-screen overflow-hidden relative">
       </div>
     </div>
   );
