@@ -7,6 +7,7 @@ import { IconBrandYoutubeFilled } from "@tabler/icons-react";
 import Link from "next/link";
 import { Marquee } from "./ui/marquee";
 import { AnimatedBeamMultipleOutputDemo } from "./AnimatedBeamMultipleOutputDemo";
+import { TextAnimate } from "./ui/textAnimate";
 
 export function BentoPageTwo() {
   const features = [
@@ -45,16 +46,113 @@ export function BentoPageTwo() {
   return (
     <div className="relative z-20 py-10 lg:py-40 max-w-7xl mx-auto">
       <div className="px-8">
-        <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white">
+        <TextAnimate
+          variants={{
+            hidden: {
+              opacity: 0,
+              y: 30,
+              rotate: 45,
+              scale: 0.5,
+            },
+            show: (i) => ({
+              opacity: 1,
+              y: 0,
+              rotate: 0,
+              scale: 1,
+              transition: {
+                delay: i * 0.1,
+                duration: 0.4,
+                y: {
+                  type: "spring",
+                  damping: 12,
+                  stiffness: 200,
+                  mass: 0.8,
+                },
+                rotate: {
+                  type: "spring",
+                  damping: 8,
+                  stiffness: 150,
+                },
+                scale: {
+                  type: "spring",
+                  damping: 10,
+                  stiffness: 300,
+                },
+              },
+            }),
+            exit: (i) => ({
+              opacity: 0,
+              y: 30,
+              rotate: 45,
+              scale: 0.5,
+              transition: {
+                delay: i * 0.1,
+                duration: 0.4,
+              },
+            }),
+          }}
+          by="character"
+          as="h4"
+          className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white"
+        >
           Why Xenon Notes?
-        </h4>
+        </TextAnimate>
 
-        <p className="text-sm lg:text-base  max-w-2xl  my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
+        <TextAnimate
+          variants={{
+            hidden: {
+              opacity: 0,
+              y: 30,
+              rotate: 45,
+              scale: 0.5,
+            },
+            show: (i) => ({
+              opacity: 1,
+              y: 0,
+              rotate: 0,
+              scale: 1,
+              transition: {
+                delay: i * 0.1,
+                duration: 0.4,
+                y: {
+                  type: "spring",
+                  damping: 12,
+                  stiffness: 200,
+                  mass: 0.8,
+                },
+                rotate: {
+                  type: "spring",
+                  damping: 8,
+                  stiffness: 150,
+                },
+                scale: {
+                  type: "spring",
+                  damping: 10,
+                  stiffness: 300,
+                },
+              },
+            }),
+            exit: (i) => ({
+              opacity: 0,
+              y: 30,
+              rotate: 45,
+              scale: 0.5,
+              transition: {
+                delay: i * 0.1,
+                duration: 0.4,
+              },
+            }),
+          }}
+          by="character"
+          as="p"
+          delay={0.1}
+          className="text-sm lg:text-base  max-w-2xl  my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300"
+        >
           Creating notes can be messy, time consuming, and easy to lose track
           of. That's why we built Xenon Notes, your AI-powered partner that
           helps you capture, organize, and revisit your ideas effortlessly. It's
           not just easier, it's the smarter way to do notes.
-        </p>
+        </TextAnimate>
       </div>
 
       <div className="relative ">
