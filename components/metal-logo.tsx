@@ -27,25 +27,27 @@ export default function MetalLogo() {
         const response = await fetch(LOGO_PATH, {
           cache: "force-cache", // Use browser's cache when possible
         });
-        
+
         if (!response.ok) {
-          throw new Error(`Failed to fetch image: ${response.status} ${response.statusText}`);
+          throw new Error(
+            `Failed to fetch image: ${response.status} ${response.statusText}`
+          );
         }
-        
+
         const blob = await response.blob();
-        const file = new File([blob], "logo.svg", { 
-          type: blob.type || 'image/svg+xml' 
+        const file = new File([blob], "logo.svg", {
+          type: blob.type || "image/svg+xml",
         });
 
         // Process the image on the next tick to avoid blocking the UI
         setTimeout(async () => {
           try {
             const parsedData = await parseLogoImage(file);
-            
+
             if (!parsedData || !parsedData.imageData) {
               throw new Error("Failed to parse image data");
             }
-            
+
             // Cache the result
             cacheImageData(parsedData.imageData);
             setImageData(parsedData.imageData);
@@ -69,15 +71,15 @@ export default function MetalLogo() {
     try {
       const cacheData = localStorage.getItem(CACHE_KEY);
       if (!cacheData) return null;
-      
+
       const { timestamp, width, height, data } = JSON.parse(cacheData);
-      
+
       // Check if cache is expired
       if (Date.now() - timestamp > CACHE_EXPIRY) {
         localStorage.removeItem(CACHE_KEY);
         return null;
       }
-      
+
       // Reconstruct ImageData from cached data
       const uint8Array = new Uint8ClampedArray(Object.values(data));
       return new ImageData(uint8Array, width, height);
@@ -94,7 +96,7 @@ export default function MetalLogo() {
         timestamp: Date.now(),
         width: data.width,
         height: data.height,
-        data: Array.from(data.data)
+        data: Array.from(data.data),
       };
       localStorage.setItem(CACHE_KEY, JSON.stringify(cacheObj));
     } catch (err) {
@@ -108,13 +110,24 @@ export default function MetalLogo() {
   }
 
   if (error) {
-    return <div className="w-full h-full flex items-center justify-center text-red-500">{error}</div>;
+    return (
+      <div className="w-full h-full flex items-center justify-center text-red-500">
+        {error}
+      </div>
+    );
   }
 
   if (loading || !imageData) {
+    // Show static SVG as placeholder and a loader
     return (
-      <div className="w-full h-full flex items-center justify-center text-white">
-        <div className="animate-pulse">Loading logo...</div>
+      <div className="w-full h-full flex items-center justify-center relative">
+        <img
+          src="/xenon-metal.png"
+          alt="Logo"
+          className="w-full h-full object-contain opacity-60"
+          style={{ position: "absolute", inset: 0 }}
+          draggable={false}
+        />
       </div>
     );
   }
