@@ -10,6 +10,7 @@
 @theme inline {
   --animate-marquee: marquee var(--duration) infinite linear;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  --animate-line-shadow: line-shadow 15s linear infinite;
 }
 
 @keyframes marquee {
@@ -26,5 +27,21 @@
   }
   to {
     transform: translateY(calc(-100% - var(--gap)));
+  }
+}
+
+.bg-offer {
+  background-image: url("../public/dark-shell.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@keyframes line-shadow {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% -100%;
   }
 }
