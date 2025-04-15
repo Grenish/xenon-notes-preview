@@ -29,15 +29,11 @@ export const GoogleGeminiEffect = ({
           `Scroll this component and see the bottom SVG come to life wow this
         works!`}
       </p>
-      <div className="w-full h-[890px] -top-60 md:-top-35  flex items-center justify-center bg-red-transparent absolute ">
-        <button className="font-bold bg-white rounded-full md:px-4 md:py-2 px-2 py-1 md:mt-24 mt-8 z-30 md:text-base text-black text-xs  w-fit mx-auto ">
-          Xenon Orgs
-        </button>
-      </div>
+
       <svg
         width="1440"
         height="890"
-        viewBox="0 0 1440 890"
+        viewBox="0 0 1440 800"
         xmlns="http://www.w3.org/2000/svg"
         className=" absolute -top-60  md:-top-40 w-full"
       >
