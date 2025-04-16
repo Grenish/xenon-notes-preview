@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+* {
+  scroll-behavior: smooth;
+}
+
 .hero-background {
   background-image: url("../public/hero-bg.png");
   background-size: cover;
@@ -202,4 +206,11 @@
 .loader {
   display: inline-block;
   margin: 0 16px;
+}
+
+.bg-wait {
+  background-image: url("../public/moon.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
