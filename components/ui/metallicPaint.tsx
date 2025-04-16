@@ -34,7 +34,7 @@ export function parseLogoImage(
 
     const img = new Image();
     img.crossOrigin = "anonymous";
-    img.onload = function () {
+    img.onload = async function () {
       const MAX_SIZE = 1000;
       const MIN_SIZE = 500;
 
@@ -187,6 +187,11 @@ export function parseLogoImage(
             }
           }
           u.set(newU);
+
+          // Yield to the browser every 10 iterations to keep UI responsive
+          if (iter % 10 === 0) {
+            await new Promise((r) => setTimeout(r, 0));
+          }
         }
 
         let maxVal = 0;
