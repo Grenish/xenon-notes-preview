@@ -143,7 +143,7 @@ export function BentoPageTwo() {
               },
             }),
           }}
-          by="character"
+          by="word"
           as="p"
           delay={0.1}
           className="text-sm lg:text-base  max-w-2xl  my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300"
@@ -243,7 +243,7 @@ export const SkeletonTwo = () => {
         <div className="flex flex-1 w-full h-full flex-col space-y-2  ">
           {/* TODO */}
           <Image
-            src="/canvas-tempo.webp"
+            src="/canvas.webp"
             alt="header"
             width={800}
             height={800}
