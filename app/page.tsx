@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import MetalLogo from "@/components/metal-logo";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
@@ -20,7 +21,7 @@ import { GoogleGeminiEffectDemo } from "@/components/scroll";
 import { LineShadowText } from "@/components/ui/lineShadowText";
 import { TextAnimate } from "@/components/ui/textAnimate";
 import { BentoPageTwo } from "@/components/bentoPageTwo";
-import HyperSpeedDemo from "@/components/hyperSpeedDemo";
+import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
 
 export default function Home() {
   const navItems = [
@@ -39,6 +40,38 @@ export default function Home() {
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const placeholders = [
+    "Write your email here!!",
+    "Yess you can do it...",
+    "C'mon.. I Know you want it...",
+    "Here... example@yourgreatdomain.com",
+    "Please? Meow?",
+  ];
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const res = await fetch("/api/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const result = await res.json();
+      console.log(result);
+      if (res.ok) {
+        setSubmitted(true);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <div className="">
@@ -149,8 +182,8 @@ export default function Home() {
                   },
                 }),
               }}
-              by="character"
-              className="text-sm md:text-md text-center w-full md:w-10/12 text-gray-200/70 leading-relaxed mt-4"
+              by="word"
+              className="text-lg md:text-md text-center w-full md:w-10/12 text-gray-200/70 leading-relaxed mt-4"
               as="p"
             >
               Effortlessly create, organize, and share your notes—all in one
@@ -230,7 +263,41 @@ export default function Home() {
       <div className="">
         <GoogleGeminiEffectDemo />
       </div>
-      <div className="w-full h-screen overflow-hidden relative">
+      <div className="w-full h-screen bg-wait flex flex-col items-center justify-center">
+        <div className="text-center px-4 mb-8">
+          <TextAnimate
+            by="word"
+            as={"h2"}
+            once
+            className="text-white text-4xl md:text-5xl font-bold capitalize mb-4"
+          >
+            What are you waiting for?
+          </TextAnimate>
+          <TextAnimate
+            as={"p"}
+            by="word"
+            once
+            delay={0.2}
+            className="text-neutral-300 text-lg md:text-xl max-w-2xl mx-auto"
+          >
+            Be among the first to experience Xenon Notes. Sign up now to get
+            notified when we launch to the public.
+          </TextAnimate>
+        </div>
+        {/* Added a fixed height container with proper spacing */}
+        <div className="w-full max-w-xl px-4 h-16 mb-8">
+          <PlaceholdersAndVanishInput
+            placeholders={placeholders}
+            onChange={handleChange}
+            onSubmit={onSubmit}
+            variant="glass"
+          />
+        </div>
+        {submitted && (
+          <p className="text-white/50 mt-2">
+            You're all set. If you don't believe me… check your email.
+          </p>
+        )}
       </div>
     </div>
   );
