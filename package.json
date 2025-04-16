@@ -6,10 +6,12 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "email": "email dev"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.0",
+    "@react-email/components": "0.0.36",
     "@tabler/icons-react": "^3.31.0",
     "@types/three": "^0.175.0",
     "class-variance-authority": "^0.7.1",
@@ -19,18 +21,18 @@
     "lucide-react": "^0.488.0",
     "motion": "^12.7.2",
     "next": "15.3.0",
-    "postprocessing": "^6.37.2",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "tailwind-merge": "^3.2.0",
-    "three": "^0.175.0"
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "resend": "^4.3.0",
+    "tailwind-merge": "^3.2.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4"
+    "react-email": "4.0.7",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }
