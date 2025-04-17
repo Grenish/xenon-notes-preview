@@ -214,3 +214,17 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.bg-about {
+  background-image: url("../public/spectral.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bg-goodbye{
+  background-image: url("../public/goodbye.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
