@@ -1,7 +1,4 @@
-import { Resend } from 'resend';
-import ThankyouEmail from '@/emails/ThankYou';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { sendThankYouEmail } from '@/lib/email';
 
 export async function POST(request: Request) {
     try {
@@ -10,18 +7,13 @@ export async function POST(request: Request) {
             return new Response(JSON.stringify({ error: "Missing email" }), { status: 400 });
         }
 
-        const { data, error } = await resend.emails.send({
-            from: 'Xenon Notes <donotreply@grenishrai.icu>',
-            to: [email],
-            subject: 'Thank You for signing up!',
-            react: ThankyouEmail(),
-        });
+        const result = await sendThankYouEmail(email);
 
-        if (error) {
-            return new Response(JSON.stringify({ error }), { status: 500 });
+        if (!result.success) {
+            return new Response(JSON.stringify({ error: result.error }), { status: 500 });
         }
 
-        return new Response(JSON.stringify(data));
+        return new Response(JSON.stringify(result.data));
     } catch (error) {
         return new Response(JSON.stringify({ error }), { status: 500 });
     }
