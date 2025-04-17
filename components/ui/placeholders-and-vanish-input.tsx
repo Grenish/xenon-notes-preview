@@ -14,7 +14,7 @@ export function PlaceholdersAndVanishInput({
   placeholders: string[];
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  variant?: "default" | "gradient" | "minimal" | "outlined" | "glass";
+  variant?: "default" | "gradient" | "minimal" | "outlined" | "glass" | "neumorphic" | "glow" | "accent" | "frosted" | "layered" | "elegant" | "cosmic";
 }) {
   const [currentPlaceholder, setCurrentPlaceholder] = useState(0);
 
@@ -248,6 +248,64 @@ export function PlaceholdersAndVanishInput({
           "shadow-[0px_8px_16px_-6px_rgba(0,0,0,0.1),_0px_0px_0px_1px_rgba(255,255,255,0.1)]",
           focused && "bg-white/80 dark:bg-zinc-800/80 border-white/30 dark:border-zinc-600/40"
         );
+      case "neumorphic":
+        return cn(
+          baseStyles,
+          "bg-[#f0f0f3] dark:bg-[#1a1a1d]",
+          "shadow-[6px_6px_10px_0px_rgba(0,0,0,0.1),-6px_-6px_10px_0px_rgba(255,255,255,0.8)] dark:shadow-[6px_6px_10px_0px_rgba(0,0,0,0.5),-6px_-6px_10px_0px_rgba(255,255,255,0.05)]",
+          focused && "shadow-[inset_4px_4px_8px_0px_rgba(0,0,0,0.1),inset_-4px_-4px_8px_0px_rgba(255,255,255,0.8)] dark:shadow-[inset_4px_4px_8px_0px_rgba(0,0,0,0.5),inset_-4px_-4px_8px_0px_rgba(255,255,255,0.05)]"
+        );
+      case "glow":
+        return cn(
+          baseStyles,
+          "bg-white dark:bg-zinc-900/80",
+          "border border-gray-100 dark:border-zinc-800",
+          "shadow-[0_0_15px_2px_rgba(99,102,241,0.2)]",
+          focused && "shadow-[0_0_20px_4px_rgba(99,102,241,0.3)] border-blue-200/50 dark:border-blue-500/30"
+        );
+      case "accent":
+        return cn(
+          baseStyles,
+          "bg-white dark:bg-zinc-900",
+          "border-2 border-blue-500/30 dark:border-blue-500/20",
+          "shadow-[0px_2px_5px_-1px_rgba(0,0,0,0.05)]",
+          focused && "border-blue-500/60 dark:border-blue-500/40 shadow-[0_0_0_4px_rgba(59,130,246,0.1)]"
+        );
+      case "frosted":
+        return cn(
+          baseStyles,
+          "bg-white/20 dark:bg-white/5 backdrop-blur-xl",
+          "border border-white/40 dark:border-white/10",
+          "shadow-[0px_8px_16px_-6px_rgba(0,0,0,0.08),inset_0_0_0_1px_rgba(255,255,255,0.5)] dark:shadow-[0px_8px_16px_-6px_rgba(0,0,0,0.2),inset_0_0_0_1px_rgba(255,255,255,0.1)]",
+          focused && "bg-white/30 dark:bg-white/10 border-white/60 dark:border-white/20"
+        );
+      case "layered":
+        return cn(
+          baseStyles,
+          "bg-white dark:bg-zinc-800",
+          "border border-gray-100 dark:border-zinc-700",
+          "shadow-[0_1px_3px_rgba(0,0,0,0.12),0_1px_2px_rgba(0,0,0,0.24)]",
+          "after:content-[''] after:absolute after:-z-10 after:top-[4px] after:left-[5px] after:w-[calc(100%-10px)] after:h-full after:bg-gray-50 dark:after:bg-zinc-700 after:rounded-full",
+          "before:content-[''] before:absolute before:-z-20 before:top-[8px] before:left-[10px] before:w-[calc(100%-20px)] before:h-full before:bg-gray-100 dark:before:bg-zinc-600 before:rounded-full",
+          focused && "shadow-[0_3px_6px_rgba(0,0,0,0.16),0_3px_6px_rgba(0,0,0,0.23)]"
+        );
+      case "elegant":
+        return cn(
+          baseStyles,
+          "bg-gradient-to-r from-white to-gray-50 dark:from-zinc-800 dark:to-zinc-900",
+          "border border-gray-200/80 dark:border-zinc-700/80",
+          "shadow-[0_10px_15px_-3px_rgba(0,0,0,0.05),0_4px_6px_-2px_rgba(0,0,0,0.01)]",
+          focused && "shadow-[0_20px_25px_-5px_rgba(0,0,0,0.05),0_10px_10px_-5px_rgba(0,0,0,0.01)] border-gray-300/80 dark:border-zinc-600/80"
+        );
+      case "cosmic":
+        return cn(
+          baseStyles, 
+          "bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 dark:from-blue-950 dark:via-indigo-950 dark:to-purple-950",
+          "border border-indigo-200/30 dark:border-indigo-800/30",
+          "shadow-[0_0_15px_rgba(99,102,241,0.15)]",
+          "after:content-[''] after:absolute after:inset-0 after:bg-[radial-gradient(ellipse_at_top_right,rgba(79,70,229,0.15),transparent_50%),radial-gradient(ellipse_at_bottom_left,rgba(99,102,241,0.15),transparent_50%)] after:rounded-full after:pointer-events-none",
+          focused && "border-indigo-300/50 dark:border-indigo-700/50 shadow-[0_0_20px_rgba(99,102,241,0.25)]"
+        );
       default:
         return cn(
           baseStyles,
@@ -266,7 +324,7 @@ export function PlaceholdersAndVanishInput({
       onSubmit={handleSubmit}
       onMouseEnter={() => !focused && setFocused(true)}
       onMouseLeave={() => !document.activeElement?.isSameNode(inputRef.current) && setFocused(false)}
-      style={{ isolation: 'isolate' }}
+      style={{ isolation: 'isolate', zIndex: 0 }}
     >
       <canvas
         className={cn(
