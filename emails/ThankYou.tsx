@@ -17,7 +17,11 @@ import {
   Text,
 } from "@react-email/components";
 
-const ThankyouEmail = () => {
+interface ThankyouEmailProps {
+  deleteToken?: string;
+}
+
+const ThankyouEmail = ({ deleteToken = "" }: ThankyouEmailProps) => {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -81,13 +85,6 @@ const ThankyouEmail = () => {
                   </li>
                 </ul>
               </Section>
-
-              <Button
-                className="bg-gray-900 text-white rounded-[4px] px-[32px] py-[12px] text-[16px] font-medium no-underline text-center box-border"
-                href="https://xenonnotes.vercel.app/waitlist-status"
-              >
-                Check Waitlist Status
-              </Button>
             </Section>
 
             <Hr className="border-t border-gray-200 my-[8px] mx-0" />
@@ -139,14 +136,12 @@ const ThankyouEmail = () => {
 
               <Text className="text-[12px] leading-[18px] text-gray-600 m-0 mt-[16px]">
                 <Link
-                  href="https://xenonnotes.vercel.app/unsubscribe"
+                  href={`${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/unsubscribe?token=${deleteToken}`}
                   className="text-gray-600 underline"
                 >
                   Unsubscribe
                 </Link>{" "}
-                •{" "}
               </Text>
-
               {/* Spam-proof identifier */}
               <Text className="text-[10px] leading-[14px] text-gray-500 m-0 mt-[24px]">
                 Message ID: XN-{Math.random().toString(36).substring(2, 10)}-WL
