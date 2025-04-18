@@ -136,7 +136,7 @@ const ThankyouEmail = ({ deleteToken = "" }: ThankyouEmailProps) => {
 
               <Text className="text-[12px] leading-[18px] text-gray-600 m-0 mt-[16px]">
                 <Link
-                  href={`${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/unsubscribe?token=${deleteToken}`}
+                  href={`${process.env.NEXT_PUBLIC_SITE_URL || "https://xenon-notes.vercel.app"}/unsubscribe?token=${deleteToken}`}
                   className="text-gray-600 underline"
                 >
                   Unsubscribe
