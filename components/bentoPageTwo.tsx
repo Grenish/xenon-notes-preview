@@ -1,10 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
-import { motion } from "motion/react";
-import { IconBrandYoutubeFilled } from "@tabler/icons-react";
-import Link from "next/link";
 import { Marquee } from "./ui/marquee";
 import { AnimatedBeamMultipleOutputDemo } from "./AnimatedBeamMultipleOutputDemo";
 import { TextAnimate } from "./ui/textAnimate";
@@ -17,22 +13,21 @@ export function BentoPageTwo() {
         "Create polished, high-quality notes in seconds using advanced AI tools — all with just a click.",
       skeleton: <SkeletonOne />,
       className:
-        "col-span-1 lg:col-span-4 border-b lg:border-r dark:border-neutral-800",
+        "col-span-1 lg:col-span-4 border-b lg:border-r border-neutral-800",
     },
     {
       title: "Real-Time Collaboration with AI",
       description:
         "Unlock Canvas Mode and co-create with AI — brainstorm, refine, and finalize your notes together in real time.",
       skeleton: <SkeletonTwo />,
-      className: "border-b col-span-1 lg:col-span-2 dark:border-neutral-800",
+      className: "border-b col-span-1 lg:col-span-2 border-neutral-800",
     },
     {
       title: "Flexible Export Options",
       description:
         "Download your notes in multiple formats — PDF, Markdown, and more — with just one click.",
       skeleton: <SkeletonThree />,
-      className:
-        "col-span-1 lg:col-span-3 lg:border-r  dark:border-neutral-800",
+      className: "col-span-1 lg:col-span-3 lg:border-r border-neutral-800",
     },
     {
       title: "Secure Cloud Sync",
@@ -93,7 +88,7 @@ export function BentoPageTwo() {
           }}
           by="character"
           as="h4"
-          className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white"
+          className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-white"
         >
           Why Xenon Notes?
         </TextAnimate>
@@ -146,7 +141,7 @@ export function BentoPageTwo() {
           by="word"
           as="p"
           delay={0.1}
-          className="text-sm lg:text-base  max-w-2xl  my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300"
+          className="text-sm lg:text-base max-w-2xl my-4 mx-auto text-neutral-300 text-center font-normal"
         >
           Creating notes can be messy, time consuming, and easy to lose track
           of. That's why we built Xenon Notes, your AI-powered partner that
@@ -155,13 +150,13 @@ export function BentoPageTwo() {
         </TextAnimate>
       </div>
 
-      <div className="relative ">
-        <div className="grid grid-cols-1 lg:grid-cols-6 mt-12 xl:border rounded-md dark:border-neutral-800">
+      <div className="relative">
+        <div className="grid grid-cols-1 lg:grid-cols-6 mt-12 xl:border rounded-md border-neutral-800">
           {features.map((feature) => (
             <FeatureCard key={feature.title} className={feature.className}>
               <FeatureTitle>{feature.title}</FeatureTitle>
               <FeatureDescription>{feature.description}</FeatureDescription>
-              <div className=" h-full w-full">{feature.skeleton}</div>
+              <div className="h-full w-full">{feature.skeleton}</div>
             </FeatureCard>
           ))}
         </div>
@@ -186,7 +181,7 @@ const FeatureCard = ({
 
 const FeatureTitle = ({ children }: { children?: React.ReactNode }) => {
   return (
-    <p className=" max-w-5xl mx-auto text-left tracking-tight text-black dark:text-white text-xl md:text-2xl md:leading-snug">
+    <p className="max-w-5xl mx-auto text-left tracking-tight text-white text-xl md:text-2xl md:leading-snug">
       {children}
     </p>
   );
@@ -196,8 +191,8 @@ const FeatureDescription = ({ children }: { children?: React.ReactNode }) => {
   return (
     <p
       className={cn(
-        "text-sm md:text-base  max-w-4xl text-left mx-auto",
-        "text-neutral-500 text-center font-normal dark:text-neutral-300",
+        "text-sm md:text-base max-w-4xl text-left mx-auto",
+        "text-neutral-300 text-center font-normal",
         "text-left max-w-sm mx-0 md:text-sm my-2"
       )}
     >
@@ -209,8 +204,8 @@ const FeatureDescription = ({ children }: { children?: React.ReactNode }) => {
 export const SkeletonOne = () => {
   return (
     <div className="relative flex py-8 px-2 gap-10 h-[50vh]">
-      <div className="w-full  p-5  mx-auto bg-white dark:bg-neutral-900 shadow-2xl group h-full">
-        <div className="flex flex-1 w-full h-full flex-col space-y-2  ">
+      <div className="w-full p-5 mx-auto bg-neutral-900 shadow-2xl group h-full">
+        <div className="flex flex-1 w-full h-full flex-col space-y-2">
           {/* TODO */}
           <Image
             src="/chat-update.png"
@@ -222,8 +217,8 @@ export const SkeletonOne = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-0 z-40 inset-x-0 h-60 bg-gradient-to-t from-white dark:from-black via-white dark:via-black to-transparent w-full pointer-events-none" />
-      <div className="absolute top-0 z-40 inset-x-0 h-60 bg-gradient-to-b from-white dark:from-black via-transparent to-transparent w-full pointer-events-none" />
+      <div className="absolute bottom-0 z-40 inset-x-0 h-60 bg-gradient-to-t from-black via-black to-transparent w-full pointer-events-none" />
+      <div className="absolute top-0 z-40 inset-x-0 h-60 bg-gradient-to-b from-black via-transparent to-transparent w-full pointer-events-none" />
     </div>
   );
 };
@@ -239,8 +234,8 @@ export const SkeletonThree = () => {
 export const SkeletonTwo = () => {
   return (
     <div className="relative flex py-8 px-2 gap-10 h-[50vh]">
-      <div className="w-full  p-5  mx-auto bg-white dark:bg-neutral-900 shadow-2xl group h-full">
-        <div className="flex flex-1 w-full h-full flex-col space-y-2  ">
+      <div className="w-full p-5 mx-auto bg-neutral-900 shadow-2xl group h-full">
+        <div className="flex flex-1 w-full h-full flex-col space-y-2">
           {/* TODO */}
           <Image
             src="/canvas.webp"
@@ -252,8 +247,8 @@ export const SkeletonTwo = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-0 z-40 inset-x-0 h-60 bg-gradient-to-t from-white dark:from-black via-white dark:via-black to-transparent w-full pointer-events-none" />
-      <div className="absolute top-0 z-40 inset-x-0 h-60 bg-gradient-to-b from-white dark:from-black via-transparent to-transparent w-full pointer-events-none" />
+      <div className="absolute bottom-0 z-40 inset-x-0 h-60 bg-gradient-to-t from-black via-black to-transparent w-full pointer-events-none" />
+      <div className="absolute top-0 z-40 inset-x-0 h-60 bg-gradient-to-b from-black via-transparent to-transparent w-full pointer-events-none" />
     </div>
   );
 };
@@ -282,7 +277,7 @@ export const SkeletonFour = () => {
     },
   ];
   return (
-    <div className="h-60 md:h-50  flex flex-col items-center relative bg-transparent dark:bg-transparent mt-10">
+    <div className="h-60 md:h-50 flex flex-col items-center relative bg-transparent mt-10">
       <Marquee
         pauseOnHover
         className="absolute [--duration:20s] [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] "
@@ -293,13 +288,12 @@ export const SkeletonFour = () => {
             className={cn(
               "relative w-32 cursor-pointer overflow-hidden rounded-xl border p-4",
               "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
-              "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
               "transform-gpu blur-[1px] transition-all duration-300 ease-out hover:blur-none"
             )}
           >
             <div className="flex flex-row items-center gap-2">
               <div className="flex flex-col">
-                <figcaption className="text-sm font-medium dark:text-white ">
+                <figcaption className="text-sm font-medium text-white">
                   {f.name}
                 </figcaption>
               </div>
