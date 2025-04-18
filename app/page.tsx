@@ -122,8 +122,14 @@ export default function Home() {
             </TextAnimate>
           </div>
 
-          <div className="w-10/12 sm:w-3/4 md:w-1/2 h-[180px] md:h-[250px]">
-            <MetalLogo />
+          <div className="w-10/12 sm:w-3/4 md:w-1/2 h-[180px] md:h-[250px] flex items-center justify-center">
+            <Image
+              src={"/xenon-color.png"}
+              alt="Xenon Logo"
+              width={1000}
+              height={1000}
+              className="w-50 h-auto object-cover"
+            />
           </div>
         </div>
       </div>
@@ -202,7 +208,7 @@ export default function Home() {
           <TextAnimate
             as={"p"}
             by="word"
-            className="text-xl md:text-2xl text-neutral-300 max-w-3xl mx-auto font-light"
+            className="text-md md:text-xl text-neutral-300 max-w-3xl mx-auto font-light"
           >
             Why rely on a single AI when you can harness the collective
             intelligence of multiple models?
@@ -212,14 +218,16 @@ export default function Home() {
         {/* Simplified central element */}
         <div className="flex items-center justify-center w-full max-w-5xl mb-16 relative z-10">
           <div className="flex items-center px-6 py-3 bg-neutral-900/80 rounded-full border border-neutral-700">
-            <span className="text-neutral-300 text-sm mr-3">Powered by</span>
+            <span className="text-neutral-300 text-xs md:text-sm mr-3">
+              Powered by
+            </span>
             <div className="flex space-x-3 items-center">
               <div className="w-2 h-2 rounded-full bg-indigo-400"></div>
               <div className="w-2 h-2 rounded-full bg-purple-400"></div>
               <div className="w-2 h-2 rounded-full bg-pink-400"></div>
               <div className="w-2 h-2 rounded-full bg-green-400"></div>
             </div>
-            <span className="text-white text-sm ml-3 font-medium">
+            <span className="text-white text-xs md:text-sm ml-3 font-medium">
               Intelligent Model Switching
             </span>
           </div>
@@ -517,7 +525,10 @@ export default function Home() {
       <div className="">
         <GoogleGeminiEffectDemo />
       </div>
-      <div id="waitlist" className="w-full h-screen bg-wait flex flex-col items-center justify-center">
+      <div
+        id="waitlist"
+        className="w-full h-screen bg-wait flex flex-col items-center justify-center"
+      >
         <div className="text-center px-4 mb-8 relative z-10">
           <h2 className="text-white text-4xl md:text-5xl font-bold capitalize mb-4">
             What are you waiting for?
