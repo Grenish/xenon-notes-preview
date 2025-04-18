@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 
 const montserrat = Montserrat({
-  variable: "--font-montserrat",
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
+  style: "normal",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     "our mission",
     "company story",
     "AI note-taking history",
-    "team behind Xenon"
+    "team behind Xenon",
   ],
   robots: "index, follow",
   openGraph: {
@@ -34,6 +35,6 @@ export default function AboutLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className={`${montserrat.variable} antialiased`}>{children}</main>
+    <main className={`${montserrat.className} antialiased`}>{children}</main>
   );
 }
