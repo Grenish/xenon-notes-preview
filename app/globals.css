@@ -16,7 +16,7 @@
   --animate-line-shadow: line-shadow 15s linear infinite;
 }
 
-@custom-variant light (&:where(.light, .light *));
+/* Dark mode variant removed */
 
 /* ----------------- */
 /* 3. BACKGROUND STYLES */
