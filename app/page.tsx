@@ -137,7 +137,7 @@ export default function Home() {
         <ContainerScroll
           titleComponent={
             <>
-              <h1 className="text-4xl font-semibold text-black dark:text-white capitalize">
+              <h1 className="text-4xl font-semibold text-white capitalize">
                 Making notes just got easier <br />
                 <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
                   with Xenon Notes
