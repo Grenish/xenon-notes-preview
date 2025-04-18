@@ -1,37 +1,31 @@
+/* ----------------- */
+/* 1. IMPORTS & BASE */
+/* ----------------- */
 @import "tailwindcss";
 
 * {
   scroll-behavior: smooth;
 }
 
-.hero-background {
-  background-image: url("../public/hero-bg.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
+/* ----------------- */
+/* 2. THEME VARIABLES */
+/* ----------------- */
 @theme inline {
   --animate-marquee: marquee var(--duration) infinite linear;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
   --animate-line-shadow: line-shadow 15s linear infinite;
 }
 
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(calc(-100% - var(--gap)));
-  }
-}
-@keyframes marquee-vertical {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(calc(-100% - var(--gap)));
-  }
+@custom-variant light (&:where(.light, .light *));
+
+/* ----------------- */
+/* 3. BACKGROUND STYLES */
+/* ----------------- */
+.hero-background {
+  background-image: url("../public/hero-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .bg-offer {
@@ -41,15 +35,30 @@
   background-repeat: no-repeat;
 }
 
-@keyframes line-shadow {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 100% -100%;
-  }
+.bg-wait {
+  background-image: url("../public/moon.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
+.bg-about {
+  background-image: url("../public/spectral.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bg-goodbye{
+  background-image: url("../public/goodbye.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ----------------- */
+/* 4. LOADER COMPONENT */
+/* ----------------- */
 .loader {
   --path: #fff;
   --dot: red;
@@ -57,6 +66,8 @@
   width: 44px;
   height: 44px;
   position: relative;
+  display: inline-block;
+  margin: 0 16px;
 }
 
 .loader:before {
@@ -121,15 +132,43 @@
     infinite;
 }
 
+/* -------------------- */
+/* 5. ANIMATIONS/KEYFRAMES */
+/* -------------------- */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes line-shadow {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% -100%;
+  }
+}
+
 @keyframes pathTriangle {
   33% {
     stroke-dashoffset: 74;
   }
-
   66% {
     stroke-dashoffset: 147;
   }
-
   100% {
     stroke-dashoffset: 221;
   }
@@ -139,11 +178,9 @@
   33% {
     transform: translate(0, 0);
   }
-
   66% {
     transform: translate(10px, -18px);
   }
-
   100% {
     transform: translate(-10px, -18px);
   }
@@ -153,15 +190,12 @@
   25% {
     stroke-dashoffset: 64;
   }
-
   50% {
     stroke-dashoffset: 128;
   }
-
   75% {
     stroke-dashoffset: 192;
   }
-
   100% {
     stroke-dashoffset: 256;
   }
@@ -171,15 +205,12 @@
   25% {
     transform: translate(0, 0);
   }
-
   50% {
     transform: translate(18px, -18px);
   }
-
   75% {
     transform: translate(0, -36px);
   }
-
   100% {
     transform: translate(-18px, -18px);
   }
@@ -189,42 +220,13 @@
   25% {
     stroke-dashoffset: 125;
   }
-
   50% {
     stroke-dashoffset: 175;
   }
-
   75% {
     stroke-dashoffset: 225;
   }
-
   100% {
     stroke-dashoffset: 275;
   }
-}
-
-.loader {
-  display: inline-block;
-  margin: 0 16px;
-}
-
-.bg-wait {
-  background-image: url("../public/moon.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.bg-about {
-  background-image: url("../public/spectral.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.bg-goodbye{
-  background-image: url("../public/goodbye.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
