@@ -162,7 +162,7 @@ export default function About() {
             <div className="relative h-80 md:h-[500px] rounded-2xl overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"></div>
               <Image
-                src="/woman-notes.jpeg"
+                src="/alarm.jpeg"
                 alt="Our story"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
